@@ -1,0 +1,423 @@
+/* Basic reset */
+body, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar {
+    background-color: #f96001;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar ul {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Aligns list items horizontally */
+}
+
+.navbar li {
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+.navbar a {
+    text-decoration: none; /* Removes underline from links */
+    color: black; /* Sets text color */
+    font-weight: bold; /* Makes text bold */
+    font-size: 16px; /* Sets font size */
+}
+
+.navbar a:hover {
+    background-color: #ea3131;
+    color: #333;
+}
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons a {
+    color: white;
+    font-size: 24px;
+    padding: 0 10px;
+}
+
+.navbar-icons a:hover {
+    color: #333;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Home Section */
+.home-section {
+    background: url('https://i.imgur.com/6dT5K5C.jpeg') no-repeat center center/cover;
+    height: 100vh; /* Full viewport height */
+    position: relative;
+    color: black; /* Text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Optional: Background overlay to make the text more visible */
+.home-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+.home-section h1,
+.home-section p {
+    position: relative;
+    z-index: 2;
+    color: white; /* Make the text white for contrast */
+}
+
+.home-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.home-section p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Main container for the menu */
+.menu-container {
+    width: 100%;
+    background-color: #ffaf3f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.menu-container button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Scrollable section */
+.menu {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 90%;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: orange;
+    border-radius: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu-item.active {
+    background-color: #e69524;
+}
+
+/* Products section in grid layout */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Product card styles */
+.product-card {
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Allows content to stack vertically */
+    justify-content: space-between; /* Pushes content to the top and bottom */
+}
+
+/* Hover effect for product card (pop-out) */
+.product-card:hover {
+    transform: scale(1.05); /* Pop-out effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.product-card p {
+    margin-top: 5px;
+    color: #777;
+}
+
+.product-card .price {
+    color: #ffaf3f;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Add Now button */
+.product-card .add-now-btn {
+    background-color: #ffaf3f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card .add-now-btn:hover {
+    background-color: #e89f33; /* Darken button on hover */
+}
+
+/* Ensure button stays at the bottom of the card */
+.product-card {
+    min-height: 350px; /* Optional: Set a min-height to keep cards uniform in size */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Add Now Button */
+.product-card button {
+    background-color: #ffaf3f !important; /* Added !important */
+    color: white !important; /* Added !important */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.product-card button:hover {
+    background-color: #e69524 !important; /* Added !important */
+}
+
+/* Quantity controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    background-color: #ffaf3f;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity-controls span {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Modal container */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content with scroll */
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%; /* Adjusted width for laptop screen */
+    max-width: 600px; /* Cap the size on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 80vh; /* Limit height to 80% of the view height */
+    overflow-y: auto; /* Enable vertical scroll if content is too tall */
+}
+
+/* Close button (X) */
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+        /* Checkout Form Popup */
+        .checkout-form {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            overflow-y: auto; /* Enable scrolling for the form */
+        }
+
+        .form-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 120px auto;
+            position: relative;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #product-summary {
+            margin-bottom: 30px;
+        }
+
+        #added-products {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        #added-products .product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        #added-products .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #add-more-btn {
+            background-color: #ff8b38;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff8b38;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .submit-btn {
+            background-color: #ff8b38;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:hover {
+            background-color: #ff7038;
+        }
