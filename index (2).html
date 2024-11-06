@@ -8,19 +8,78 @@
     <link rel="stylesheet" href="bawarchi.css">
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#review">Review</a></li>
-        </ul>
-    </nav>
-    <!-- Home Section -->
-    <div class="home-section">
-        <div>
-            <marquee><h1><bold>Welcome to World of Bawarchi</bold></h1></marquee>
+    <header>
+        <div class="header-container">
+            <!-- Left Side: Logo and Location Dropdown -->
+            <div class="logo-location">
+                <img src="C:\Users\rkarn\Downloads\WhatsApp_Image_2024-10-24_at_16.19.39_2a2aec6b-transformed.jpeg" alt="Logo" class="logo">
+                
+                <!--  Dropdown City Selection -->
+                <div class="dropdown">
+                    <button class="dropdown-btn" id="selectedCity">Kathmandu <i class="arrow-down">&#9660;</i></button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="selectCity('Kathmandu')">Kathmandu</a>
+                        <a href="#" onclick="selectCity('Lalitpur')">Lalitpur</a>
+                        <a href="#" onclick="selectCity('Bhaktapur')">Bhaktapur</a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Center: Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="searchBar" placeholder="Search menu..." />
+            </div>
+       <!-- Right Side: Login/Register Button -->
+      <div class="login-container">
+    <button class="login-btn" id="loginBtn">Login / Register</button>
+      </div>
+
+   <!-- The Modal -->
+   <div id="loginModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <!-- Toggle Buttons for Login/Register -->
+        <div class="toggle-container">
+            <button class="toggle-btn active-toggle" id="showLogin">Login</button>
+            <button class="toggle-btn" id="showRegister">Register</button>
         </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <h2>Login</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <input type="submit" value="Register">
+        </form>
     </div>
+</div>   
+    
+            <!-- Right Side: Dropdown Menu (Hamburger) -->
+            <div class="dropdown-menu">
+                <button class="hamburger">&#9776;</button>
+                <div class="dropdown-content">
+                    <a href="#">Home</a>
+                    <a href="#">Menu</a>
+                    <a href="#">About Us</a>
+                </div>
+            </div>
+        </div>
+    </header>    
+    <header>
+        <img src="C:\Users\rkarn\Downloads\Bawarchi NEPAL (2).png" alt="Banner Image" class="banner-img" />
+    </header>
+       
     <!-- Menu section -->
     <div class="menu-container">
         <button onclick="scrollMenu(-100)">&#x276E;</button>
@@ -29,70 +88,81 @@
             <div class="menu-item" onclick="filterMenu('Katti Rolls')">Katti Rolls</div>
             <div class="menu-item" onclick="filterMenu('Main Course')">Main Course</div>
             <div class="menu-item" onclick="filterMenu('Veg')">Veg</div>
-            <div class="menu-item" onclick="filterMenu('Non-Veg')">Non-Veg</div>
+            <div class="menu-item" onclick="filterMenu('Murgh Pakwan')">Murgh Pakwan</div>
         </div>
         <button onclick="scrollMenu(100)">&#x276F;</button>
     </div>
     <!-- Checkout Form Popup -->
-    <div id="checkoutForm" class="checkout-form">
-        <div class="form-content">
-            <span class="close-btn">&times;</span>
-            <h2>Checkout</h2>
+<div id="checkoutForm" class="checkout-form">
+    <div class="form-content">
+        <span class="close-btn">&times;</span>
+        <h2>Checkout</h2>
 
-            <!-- Products Added Section -->
-            <div id="product-summary">
-                <h3>Products Added</h3>
-                <div id="added-products"></div>
-                <button id="add-more-btn">Add More Products</button>
+        <!-- Products Added Section -->
+        <div id="product-summary">
+            <h3>Products Added</h3>
+            <div id="added-products">
+                <!-- Example product with quantity controls -->
+                <div class="product-item">
+                    <span class="product-name">Product 1</span>
+                    <div class="quantity-controls">
+                        <button class="decrease-qty">-</button>
+                        <input type="number" class="product-quantity" value="1" min="1">
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+                <!-- Add similar product items dynamically -->
+            </div>
+            <button id="add-more-btn">Add More Products</button>
+        </div>
+
+        <!-- Form Section -->
+        <form>
+            <div class="form-group">
+                <label for="name">Name*</label>
+                <input type="text" id="name" name="name" required>
             </div>
 
-            <!-- Form Section -->
-            <form>
-                <div class="form-group">
-                    <label for="name">Name*</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
+            <div class="form-group">
+                <label for="address">Address*</label>
+                <input type="text" id="address" name="address" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="address">Address*</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
+            <div class="form-group">
+                <label for="phone">Phone Number*</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number*</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
+            <div class="form-group">
+                <label for="city">City*</label>
+                <select id="city" name="city" required>
+                    <option value="" disabled selected>Select your city</option>
+                    <option value="kathmandu">Kathmandu</option>
+                    <option value="lalitpur">Lalitpur</option>
+                    <option value="bhaktapur">Bhaktapur</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="city">City*</label>
-                    <select id="city" name="city" required>
-                        <option value="" disabled selected>Select your city</option>
-                        <option value="kathmandu">Kathmandu</option>
-                        <option value="lalitpur">Lalitpur</option>
-                        <option value="bhaktapur">Bhaktapur</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="payment">Payment Details*</label>
+                <select id="payment" name="payment" required>
+                    <option value="" disabled selected>Payment Options</option>
+                    <option value="cash">Cash On Delivery</option>
+                    <option value="Khalti">Khalti</option>
+                    <option value="Esewa">Esewa</option>
+                    <option value="FonePay">FonePay</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="payment">Payment Details*</label>
-                    <select id="Payment" name="payment" required>
-                      <option value="" disabled selected>Payment Options</option>
-                      <option value="cash">Cash On Delivery</option>
-                      <option value="Khalti">Khalti</option>
-                      <option value="Esewa">Esewa</option>
-                      <option value="FonePay">FonePay</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="specialRequest">Special Request</label>
+                <textarea id="specialRequest" name="specialRequest" rows="4"></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label for="specialRequest">Special Request</label>
-                    <textarea id="specialRequest" name="specialRequest" rows="4"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
     </div>
+</div>
     <!-- Products section -->
     <div class="products" id="products">
         <!-- Bowls products -->
@@ -101,72 +171,47 @@
             <h3>Tomato Soup</h3>
             <p>Lime rice, juicy Lebanese spiced chicken</p>
             <div class="price">Rs 530</div>
-            <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
+            <button class="add-now-button">Add Now</button>
         </div>
+
         <div class="product-card" data-category="Shorba & Soup">
             <img src="c:\Users\rkarn\Downloads\5e66800c0ecc02d6d230f11f375e8149.jpg" alt="Egg Drop Sweetcorn Soup">
             <h3>Egg Drop Sweetcorn Soup</h3>
             <p>Quinoa, avocado, beans, veggies with creamy texture</p>
             <div class="price">Rs 450</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Shorba & Soup">
             <img src="c:\Users\rkarn\Downloads\6a61a47e75fdf88e045843f51c7e7f81.jpg" alt="Seafood Soup with Noodles">
             <h3>Seafood Soup with Noodles</h3>
             <p>Grilled chicken, teriyaki sauce, veggies</p>
             <div class="price">Rs 600</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Shorba & Soup">
             <img src="c:\Users\rkarn\Downloads\cce33f82dec85b579c6be4483ebeab6f.jpg" alt="Murgh Yakhni">
             <h3>Murgh Yakhni</h3>
             <p>Fresh salmon, rice, seaweed, veggies</p>
             <div class="price">Rs 700</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Shorba & Soup">
             <img src="c:\Users\rkarn\Downloads\hahas.jpg" alt="Mutton Bone Soupe">
             <h3>Mutton Bone Soup</h3>
             <p>Spiced beef, rice, veggies, sriracha sauce</p>
             <div class="price">Rs 550</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Shorba & Soup">
             <img src="c:\Users\rkarn\Downloads\cdeeb6aabfbe86800d38005227915979.jpg" alt="Mushroom Soup">
             <h3>Mushroom Soup</h3>
             <p>Falafel, hummus, pita, veggies with thick gravy consiting extra-ordinary flavors</p>
             <div class="price">Rs 480</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
 
         <!-- Katti Rolls products -->
@@ -176,186 +221,230 @@
             <p>Chicken, lettuce, tomatoes, bacon</p>
             <div class="price">Rs 400</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Katti Rolls">
             <img src="c:\Users\rkarn\Downloads\06f31c13eabfa03a74d0a38c6afd955d.jpg" alt="Prawn Rolls">
             <h3>Prawn Rolls</h3>
             <p>Bacon, lettuce, tomato, mayo</p>
             <div class="price">Rs 420</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Katti Rolls">
             <img src="c:\Users\rkarn\Downloads\25b95a8199747fb1a6b840d6cef994e7.jpg" alt="Chicken Rolls">
             <h3>Chicken Rolls</h3>
             <p>Cheese, buttered bread, grilled</p>
             <div class="price">Rs 250</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Katti Rolls">
             <img src="c:\Users\rkarn\Downloads\a29e94e8a2a05a6cccc696150811a228.jpg" alt="Fish Rolls">
             <h3>Fish Rolls</h3>
             <p>Tuna, melted cheese, mayo</p>
             <div class="price">Rs 350</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Katti Rolls">
             <img src="c:\Users\rkarn\Downloads\22264c053bc78df6c8d2e50e869d5e92.jpg" alt="Mushroom Rolls">
             <h3>Mushroom Rolls</h3>
             <p>Turkey breast, lettuce, tomato, cheese</p>
             <div class="price">Rs 480</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
+
         <div class="product-card" data-category="Katti Rolls">
             <img src="c:\Users\rkarn\Downloads\8e135564259a5b467956f634662ea789.jpg" alt="Panner Rolls">
             <h3>Panner Rolls</h3>
             <p>Egg salad, lettuce, mayo with paneer feeling</p>
             <div class="price">Rs 280</div>
             <button onclick="addToCart(this)">Add Now</button>
-            <div class="quantity-controls" style="display:none;">
-                <button onclick="decreaseQuantity(this)">-</button>
-                <span>1</span>
-                <button onclick="increaseQuantity(this)">+</button>
-            </div>
         </div>
-           <!-- Burgers products -->
+
+           <!-- Main Course -->
+       <div class="product-card" data-category="Main Course">
+        <img src="https://via.placeholder.com/400x200" alt="Chinese Steamed or Fried Trout w/ Spicy sauce">
+         <h3>Chinese Steamed or Fried Trout w/ Spicy sauce</h3>
+         <p>Rainbow trout served with steamed or Fried</p>
+         <div class="price">Rs 550</div>
+         <button onclick="addToCart(this)">Add Now</button>
+       </div>
+
+    <div class="product-card" data-category="Main Course">
+      <img src="https://via.placeholder.com/400x200" alt="Sweet & Sour Crispy Chicken">
+      <h3>Sweet & Sour Crispy Chicken</h3>
+      <p>Authentic sweet and sour crispy chicken served with steamed rice</p>
+      <div class="price">Rs 890</div>
+      <button onclick="addToCart(this)">Add Now</button>
+    </div>
+
 <div class="product-card" data-category="Main Course">
-    <img src="https://via.placeholder.com/400x200" alt="Classic Beef Burger">
-    <h3>Classic Beef Burger</h3>
-    <p>Juicy beef patty, lettuce, tomato, cheese</p>
-    <div class="price">Rs 550</div>
+    <img src="https://via.placeholder.com/400x200" alt="Manchurian Veg/Non Veg">
+    <h3>Manchurian Veg/Non Veg</h3>
+    <p>Deeep fired veggies or meat balls cooked in sweet , spicy and tangy sauce</p>
+    <div class="price">Rs 890</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Main Course">
-    <img src="https://via.placeholder.com/400x200" alt="Cheese Burger">
-    <h3>Cheese Burger</h3>
-    <p>Beef patty, cheddar cheese, grilled onions</p>
-    <div class="price">Rs 600</div>
+    <img src="https://via.placeholder.com/400x200" alt="Congee Lamb">
+    <h3>Congee Lamb</h3>
+    <p>Shredded lamb fried and tossed in sweet and sour sauce</p>
+    <div class="price">Rs 1090</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Main Course">
-    <img src="https://via.placeholder.com/400x200" alt="Chicken Burger">
-    <h3>Chicken Burger</h3>
-    <p>Grilled chicken, lettuce, tomato, mayo</p>
-    <div class="price">Rs 500</div>
+    <img src="https://via.placeholder.com/400x200" alt="Soy Ginger Prawn">
+    <h3>Soy Ginger Prawan</h3>
+    <p>Prawns sauteed in ginger and soy sauce</p>
+    <div class="price">Rs 1180</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Main Course">
-    <img src="https://via.placeholder.com/400x200" alt="Veggie Burger">
-    <h3>Veggie Burger</h3>
-    <p>Veggie patty, avocado, lettuce, tomato</p>
-    <div class="price">Rs 450</div>
-</div>
-<div class="product-card" data-category="Main Course">
-    <img src="https://via.placeholder.com/400x200" alt="Double Cheese Burger">
-    <h3>Double Cheese Burger</h3>
-    <p>Double beef patty, cheddar cheese, bacon</p>
-    <div class="price">Rs 700</div>
-</div>
+
 <div class="product-card" data-category="Main Course">
     <img src="https://via.placeholder.com/400x200" alt="Spicy Chicken Burger">
     <h3>Spicy Chicken Burger</h3>
     <p>Grilled spicy chicken, lettuce, tomato</p>
     <div class="price">Rs 520</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <!-- Wraps products -->
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Chicken Caesar Wrap">
     <h3>Chicken Caesar Wrap</h3>
     <p>Grilled chicken, Caesar dressing, lettuce</p>
     <div class="price">Rs 450</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Falafel Wrap">
     <h3>Falafel Wrap</h3>
     <p>Falafel, hummus, veggies, tahini sauce</p>
     <div class="price">Rs 400</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Spicy Beef Wrap">
     <h3>Spicy Beef Wrap</h3>
     <p>Spiced beef, grilled veggies, sriracha mayo</p>
     <div class="price">Rs 480</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Veggie Wrap">
     <h3>Veggie Wrap</h3>
     <p>Grilled veggies, avocado, hummus</p>
     <div class="price">Rs 370</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Turkey Bacon Wrap">
     <h3>Turkey Bacon Wrap</h3>
     <p>Turkey breast, bacon, avocado, lettuce</p>
     <div class="price">Rs 520</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
+
 <div class="product-card" data-category="Veg">
     <img src="https://via.placeholder.com/400x200" alt="Grilled Chicken Wrap">
     <h3>Grilled Chicken Wrap</h3>
     <p>Grilled chicken, lettuce, tomato, mayo</p>
     <div class="price">Rs 440</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<!-- Pasta products -->
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Spaghetti Bolognese">
-    <h3>Spaghetti Bolognese</h3>
-    <p>Spaghetti, rich Bolognese sauce, Parmesan</p>
-    <div class="price">Rs 550</div>
+
+<!-- Murgh Pakwan products -->
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\dcc5e7adbc8b1fe81b7168027c071422.jpg" alt="Khurcha Saag Murgh">
+    <h3>Khurcha Saag Murgh</h3>
+    <p>Shredded chicken tikkas tossed with spinach,Fengureek,pepercorns and tempered with mustard seeds</p>
+    <div class="price">Rs 840</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Penne Alfredo">
-    <h3>Penne Alfredo</h3>
-    <p>Creamy Alfredo sauce, penne pasta, herbs</p>
-    <div class="price">Rs 520</div>
+
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\1e115eb17da8de8eb278df6548da461f.jpg" alt="Kadhai Butter Chicken">
+    <h3>Kadhai Butter Chicken</h3>
+    <p>Pakistani Dish noted for its spicy taste and use of capsicum</p>
+    <div class="price">Rs 840</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Pesto Pasta">
-    <h3>Pesto Pasta</h3>
-    <p>Penne, basil pesto, Parmesan cheese</p>
-    <div class="price">Rs 500</div>
+
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\9fa3fb041dcb9d3166e6e8fdc1996d96.jpg" alt="Tariwala Murgh">
+    <h3>Tariwala Murgh</h3>
+    <p>Chicken gravy-from a dhaba on the famous delhi ambala road</p>
+    <div class="price">Rs 860</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Lasagna">
-    <h3>Lasagna</h3>
-    <p>Layers of pasta, beef, tomato sauce, cheese</p>
-    <div class="price">Rs 600</div>
+
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\e2df516072aaf8ba35b725d57fd05a15.jpg" alt="Chicken Tikka Masala">
+    <h3>Chicken Tikka Masala</h3>
+    <p>Tandoor-Oven baked tikkas mixed in tangy masala sauce</p>
+    <div class="price">Rs 860</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Chicken Carbonara">
-    <h3>Chicken Carbonara</h3>
-    <p>Spaghetti, creamy sauce, grilled chicken</p>
-    <div class="price">Rs 530</div>
+
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\3544cd145f7a2996151104354517ce8c.jpg" alt="Butter Chicken">
+    <h3>Butter Chicken</h3>
+    <p>Delhi's finest dish, served true to the core.</p>
+    <div class="price">Rs 890</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
-<div class="product-card" data-category="Non-Veg">
-    <img src="https://via.placeholder.com/400x200" alt="Vegetarian Pasta">
-    <h3>Vegetarian Pasta</h3>
-    <p>Penne, grilled veggies, marinara sauce</p>
-    <div class="price">Rs 470</div>
+
+<div class="product-card" data-category="Murgh Pakwan">
+    <img src="C:\Users\rkarn\Downloads\edef1506c9ff9c267f352592278d7539.jpg" alt="Chicken Mughlai">
+    <h3>Chicken Mughlai</h3>
+    <p>From the imperial mughal courts,Combination of chicken cubes in thick yellow gravy.</p>
+    <div class="price">Rs 1020</div>
+    <button onclick="addToCart(this)">Add Now</button>
 </div>
 
 </div>
     </div>
+    <footer>
+        <div class="footer-container">
+            <!-- Brand Logos Section -->
+            <div class="footer-column">
+                <h3>Our Brand</h3>
+                <div class="logo-row">
+                    <img src="C:\Users\rkarn\Downloads\39.jpg" alt="Brand 1">
+                    <img src="C:\Users\rkarn\Downloads\24.png" alt="Brand 2">
+                    <img src="C:\Users\rkarn\Downloads\37.png" alt="Brand 3">
+                </div>
+            </div>
+            
+            <!-- Company Logo Section -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="C:\Users\rkarn\Downloads\WhatsApp_Image_2024-10-24_at_16.19.39_2a2aec6b-transformed.jpeg" alt="Company Logo">
+                </div>
+                <div class="footer-rights">
+                    <p>© All rights reserved. <span>Bawarchi Rolls & Biryani </span></p>
+                </div>
+            </div>
+            
+            <!-- Social Media Links Section -->
+            <div class="footer-column">
+                <h3>Our Social Handles</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/BawarchiNepal" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/bawarchi_rollsandbiryani/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@bawarchinepal" target="_blank">Tiktok</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>    
 <script src="bawarchi.js"></script>
 </body>
 </html>
