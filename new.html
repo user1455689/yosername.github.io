@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiitek</title>
+    <style>
+        @font-face {
+            font-family: 'Noyh Heavy';
+            src: url('fonts/noyh-heavy.woff2') format('woff2'),
+                url('fonts/noyh-heavy.woff') format('woff'),
+                url('fonts/noyh-heavy.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            overflow-x: hidden;
+            line-height: 1.6; /* Improve readability */
+            color: #333; /* Consistent text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar styles */
+        header {
+            background: #1E90FF; /* Consistent header background */
+            color: white;
+            padding: 15px 20px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            width: 180px;
+            max-height: 80px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white; /* Consistent link color in header */
+            font-size: 1em;
+            font-weight: bold;
+            position: relative;
+            padding: 7px 0;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #FFD700; /* Add hover effect for better UX */
+        }
+
+        /* Underline hover effect */
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background-color: #007bff;
+            transition: width 0.4s ease-in-out;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            color: black;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                background: white;
+                backdrop-filter: blur(10px);
+                padding: 10px 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+/* Hero section */
+.hero {
+    display: flex;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center;
+    width: 100%;
+    height: 80vh; /* Adjust height for better responsiveness */
+    background-color: #E8EFFC;
+    background-image: url("https://i.imgur.com/2jxxr6H.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 20px; /* Adds space from the left */
+    animation: riseUp 1.5s ease-out forwards;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; /* Center-align content */
+}
+
+/* Hero content */
+.hero-content {
+    max-width: 50%;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1.5s ease-out forwards;
+    margin-left: 15%;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Rising-up animation */
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* Heading styles */
+.hero-content h1 {
+    font-size: 3em; /* Adjust font size for better readability */
+    font-weight: bolder;
+    background: linear-gradient(315deg, #87CEFA, #4682B4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.hero-content button {
+    background-color: #1E90FF; /* Light blue color */
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    white-space: nowrap; /* Ensure text stays in a single line */
+    display: flex; /* Use flex for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 20px auto; /* Center the button horizontally */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for clarity */
+}
+
+/* Button hover effect */
+.hero-content button:hover {
+    background-color: #4682B4; /* Slightly darker blue on hover */
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        height: 600px;
+        background-size: cover;
+        padding: 40px;
+    }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
+
+@media (max-width: 786px) {
+    .hero {
+        display: flex;
+        flex-direction: column; /* Ensures content stacks properly */
+        align-items: flex-start; /* Aligns text to the left */
+        justify-content: center; /* Centers vertically */
+        height: auto; /* Adjusts based on content */
+        padding: 10px;
+        background-size: contain; /* Ensures the full image is visible */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents repetition */
+    }
+    .hero-content {
+        width: 100%; /* Ensures content is responsive */
+        text-align: left;
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero {
+        display: flex;
+        flex-direction: column; /* Ensures content stacks properly */
+        align-items: flex-start; /* Aligns text to the left */
+        justify-content: center; /* Centers vertically */
+        height: auto; /* Adjusts based on content */
+        padding: 10px;
+        background-size: contain; /* Ensures the full image is visible */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents repetition */
+    }
+    .hero-content {
+        width: 100%; /* Ensures content is responsive */
+        text-align: left;
+    }
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+    .hero-content button {
+        font-size: 1em; /* Adjust font size for mobile */
+        padding: 12px 30px; /* Adjust padding */
+        margin: 20px auto; /* Ensure button is centered */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content button {
+        font-size: 1em; /* Adjust font size for smaller screens */
+        padding: 12px 24px; /* Adjust padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content button {
+        font-size: 1em; /* Adjust font size for mobile */
+        padding: 12px 30px; /* Adjust padding */
+        margin: 20px auto; /* Ensure button is centered */
+    }
+}
+
+        
+      
+         /* Our Mission Section */
+         .mission {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            background: rgba(240, 240, 240, 0.9);
+
+        }
+
+        .mission-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ensure even spacing */
+            width: 90%;
+            max-width: 1200px;
+            padding: 40px;
+            border-radius: 10px;
+            flex-wrap: nowrap; /* Prevent wrapping */
+        }
+
+        .mission-text {
+            flex: 1;
+            margin-right: 20px; /* Add spacing between text and image */
+            text-align: left;
+        }
+
+        .mission-text h2 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            text-shadow: none; /* Remove shadow */
+        }
+
+        .mission-text p {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .mission-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .mission-image img {
+            width: 100%;
+            max-width: 600px; /* Ensure image occupies half the screen */
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design for Our Mission Section */
+        @media (max-width: 768px) {
+            .mission-container {
+                flex-direction: column; /* Stack items vertically */
+                text-align: center; /* Center-align text */
+            }
+
+            .mission-text {
+                margin-right: 0; /* Remove right margin */
+                margin-bottom: 20px; /* Add spacing below text */
+            }
+
+            .mission-image img {
+                max-width: 90%; /* Adjust image size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mission-text h2 {
+                font-size: 2.5em; /* Adjust heading size */
+            }
+
+            .mission-text p {
+                font-size: 1.2em; /* Adjust paragraph size */
+            }
+
+            .mission-image img {
+                max-width: 100%; /* Ensure image fits smaller screens */
+            }
+        }
+
+        /* General Responsive Design for Entire Site */
+        body {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Adjust font size for tablets */
+            }
+
+            nav ul {
+                gap: 15px; /* Adjust spacing in navigation */
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em; /* Adjust hero heading size */
+            }
+
+            .hero-content button {
+                font-size: 1em; /* Adjust button size */
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 12px; /* Adjust font size for mobile */
+            }
+
+            nav ul {
+                gap: 10px; /* Further adjust spacing in navigation */
+            }
+
+            .hero-content h1 {
+                font-size: 2em; /* Further adjust hero heading size */
+            }
+
+            .hero-content button {
+                font-size: 0.9em; /* Further adjust button size */
+            }
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 50px 0; /* Add padding for better spacing */
+            height: auto; /* Adjust height to fit content */
+        }
+        .clients h3{
+            text-align: center;
+            margin: 30px 0; /* Adjust margin for better spacing */
+            font-size: 3em; /* Slightly smaller font size */
+            font-weight: bold;
+            color: #333;
+            text-shadow: none; /* Remove shadow */
+        }
+
+        .clients span {
+            color: #1E90FF;
+        }
+
+        :root {
+            --marquee-width: 100vw;
+            --marquee-height: 20vh;
+        /* --marquee-elements: 12; */ /* defined with JavaScript */
+            --marquee-elements-displayed: 5;
+            --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+            --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+
+        }
+
+        .marquee {
+          width: var(--marquee-width);
+          height: var(--marquee-height);
+          color: #eee;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .marquee:before, .marquee:after {
+          position: absolute;
+          top: 0;
+          width: 10rem;
+          height: 100%;
+          content: "";
+          z-index: 1;
+        }
+
+        .marquee:before {
+          left: 0;
+          background: linear-gradient(to right, #fefdfd 0%, transparent 100%);
+        }
+
+        .marquee:after {
+          right: 0;
+          background: linear-gradient(to left, #fefdfd 0%, transparent 100%);
+        }
+
+        .marquee-content {
+          list-style: none;
+          height: 100%;
+          display: flex;
+          justify-content: space-around; /* Ensure even spacing */
+          align-items: center;
+          animation: scrolling var(--marquee-animation-duration) linear infinite;
+          gap: 20px; /* Add gap between images */
+        }
+
+        /* .marquee-content:hover {
+          animation-play-state: paused;
+        } */
+        @keyframes scrolling {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+        }
+
+        .marquee-content li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          /* text-align: center; */
+          flex-shrink: 0;
+          width: var(--marquee-element-width);
+          max-height: 100%;
+          font-size: calc(var(--marquee-height)*3/4); /* 5rem; */
+          white-space: nowrap;
+          padding: 20px; /* Adds some space around each image */
+
+        }
+
+        .marquee-content li img {
+          width: 150px; /* Adjust image size */
+          height: auto; /* Maintain aspect ratio */
+          margin: 10px; /* Add margin for spacing */
+        
+        }
+
+        @media (max-width: 768px) {
+          .marquee-content {
+            gap: 15px; /* Adjust gap for smaller screens */
+          }
+
+          .marquee-content li img {
+            width: 120px; /* Smaller image size for mobile */
+          }
+        }
+
+        @media (max-width: 480px) {
+          .marquee-content li img {
+            width: 100px; /* Further reduce size for very small screens */
+          }
+        }
+
+        @media (max-width: 600px) {
+          html { font-size: 12px; }
+          :root {
+            --marquee-width: 100vw;
+            --marquee-height: 16vh;
+            --marquee-elements-displayed: 3;
+          }
+          .marquee:before, .marquee:after { width: 5rem; }
+        }
+
+        /* Certification Section  */
+
+.certification-container{
+    background: linear-gradient(to right, #2dd4bf, #2563eb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+}       
+
+.certification-section {
+    text-align: center;
+    color: black;
+    padding: 20px;
+}
+
+.certification-section h3 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #4682B4; /* Mid-blue color */
+    margin-bottom: 20px;
+}
+
+.certifications {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Adjust spacing between certifications */
+    flex-wrap: wrap; /* Wrap items for smaller screens */
+    margin-bottom: 30px;
+}
+
+.cert {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Make cert responsive */
+    max-width: 250px; /* Set max width */
+    text-align: center; /* Center align content */
+}
+
+.main-img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.badge-img {
+    position: relative;
+    width: 80px; /* Smaller badge size */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: -20px; /* Adjust position */
+}
+
+.text {
+    font-size: 2em; /* Slightly larger text */
+    font-weight: bold;
+    margin-top: 80px;
+}
+      
+      /* Responsive Design - Small Screens */
+@media (max-width: 768px) {
+    .certification-section h3 {
+        font-size: 2.5em; /* Adjust size for smaller screens */
+    }
+
+    .certifications {
+        gap: 20px; /* Adjust gap for smaller screens */
+    }
+
+    .main-img {
+        width: 200px; /* Adjust size for smaller screens */
+    }
+
+    .badge-img {
+        width: 60px; /* Adjust badge size */
+        margin-top: -15px; /* Adjust position */
+    }
+}
+
+@media (max-width: 480px) {
+    .certification-section h3 {
+        font-size: 2em; /* Further adjust size for very small screens */
+    }
+
+    .main-img {
+        width: 150px; /* Further reduce size for very small screens */
+    }
+
+    .badge-img {
+        width: 50px; /* Further reduce badge size */
+    }
+}
+
+/* contact section */
+
+
+
+.contact-container {
+    text-align: center;
+    padding: 50px 0;
+
+}
+
+h2 {
+    color: #1E90FF;
+    font-size: 3em;
+    font-weight: bolder;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
+
+
+}
+
+.contact-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.qr-code img {
+    width: 300px;
+    height: 300px;
+}
+
+.contact-info {
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.contact-info strong {
+    color: #1E90FF;
+    font-size: 1em;
+
+}
+
+.contact-info a { 
+    text-decoration: none;
+    color: #333;
+}
+      
+      /* Responsive Design - Small Screens */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column; /* Stack elements vertically */
+        gap: 20px; /* Adjust gap for smaller screens */
+    }
+
+    .qr-code img {
+        width: 200px; /* Adjust QR code size */
+        height: 200px; /* Maintain aspect ratio */
+    }
+
+    .contact-info {
+        text-align: center; /* Center text for smaller screens */
+        font-size: 1.2em; /* Adjust font size for readability */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2.5em; /* Further adjust heading size for very small screens */
+    }
+
+    .contact-info {
+        font-size: 1em; /* Further adjust font size for very small screens */
+    }
+}
+
+/* Update "Connect with Us" header */
+.contact-container h2 {
+    text-shadow: none; /* Remove shadow effect */
+    font-weight: bold;
+    color: #1E90FF; /* Same blue as other headers */
+}
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* animation for headings*/
+      
+       /* Heading Animation */
+.section-heading {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-heading.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add this to your existing CSS */
+@media (max-width: 768px) {
+    .section-heading {
+        opacity: 1; /* Ensure it's fully visible */
+        transform: translateY(0); /* Reset the transform */
+        transition: none; /* Disable transition */
+    }
+}
+
+/* Bold headers with deep blue color */
+.hero-content h1,
+.mission-text h2,
+.clients h3,
+.certification-section h3,
+.contact-container h2 {
+    font-weight: bold;
+    color: #003366; /* Deep blue color */
+}
+
+/* Apply blue color to all headers except "Our Certifications" */
+.hero-content h1,
+.mission-text h2,
+.clients h3,
+.contact-container h2 {
+    color: #1E90FF; /* Blue color from "Our Mission" */
+}
+
+/* Set "Our Certifications" header to black */
+.certification-section h3 {
+    color: black; /* Black color for "Our Certifications" */
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav id="home">
+            <div class="logo">
+                <img src="https://i.ibb.co/1G0BxBqZ/logo.png" alt="logo">
+            </div>
+            <ul >
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mission">Our Mission</a></li>
+                <li><a href="#clients">Our Clients</a></li>
+                <li><a href="#cert">Certifications</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Redefining <br> Wellness, <br> Transforming <br> Care, <br> Empowering lives.</h1>
+                <a href="https://codepen.io/Rohan-Adhikari-the-builder/embed/MYWeYXR/?theme-id=modal#result-box" style="text-decoration: none;"><button>DISCOVER OUR SOLUTIONS!</button></a>
+            </div>
+        </section>
+        
+    </main>
+
+    <section id="mission" class="mission">
+        <div class="mission-container">
+            <div class="mission-text">
+                <h2 class="section-heading">Our <span>Mission</span></h2> <br>
+                <p>Bringing simple, smart tech to healthcare and businesses in Nepal. We make medical imaging and patient care easier, so you can focus on what matters most improving lives.</p>
+            </div>
+            <div class="mission-image">
+                <img src="https://i.ibb.co/gbbmp447/mission.jpg" alt="mission" border="0">
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="clients">
+        <h3 class="section-heading">Our <span>Clients</span></h3>
+        <div class="marquee">
+            <ul class="marquee-content">
+                <li><img src="https://i.ibb.co/bRmvK5j8/baidya-and-banskota.png" alt="baidya-and-banskota" border="0"></li>
+                <li><img src="https://i.ibb.co/hwyCtY0/birat-medical-college.png" alt="birat-medical-college" border="0"></li>
+                <li><img src="https://i.ibb.co/cXQWMYw1/CMC.png" alt="CMC" border="0"></li>
+                <li><img src="https://i.ibb.co/RkNPx04F/dhaka-medical-college.png" alt="dhaka-medical-college" border="0"></li>
+                <li><img src="https://i.ibb.co/1t62CVqh/grande.png" alt="grande" border="0"></li>
+                <li><img src="https://i.ibb.co/LXMn23N9/HRDC-1.png" alt="HRDC" border="0"></li>
+                <li><img src="https://i.ibb.co/ZtK1kng/ktm-medical-college.png" alt="ktm-medical-college" border="0"></li>
+                <li><img src="https://i.ibb.co/6Rbt9Jxt/mediciti.png" alt="mediciti" border="0"></li>
+                <li><img src="https://i.ibb.co/twmfgkVK/National-Medical-College-Image.png" alt="National-Medical-College-Image" border="0"></li>
+                <li><img src="https://i.ibb.co/DPMZQq3Z/nepal-cancer-hospital.png" alt="nepal-cancer-hospital" border="0"></li>
+                <li><img src="https://i.ibb.co/XkYBRd7H/nepalgunj-medical-college.png" alt="nepalgunj-medical-college" border="0"></li>
+                <li><img src="https://i.ibb.co/m5Vk4Spk/Nins-Remove-Background.png" alt="Nins-Remove-Background" border="0"></li>
+                <li><img src="https://i.ibb.co/QFMgnPyF/NMC.jpg" alt="NMC" border="0"></li>
+                <li><img src="https://i.ibb.co/rRg2P3r9/nobel-medical-college.png" alt="nobel-medical-college" border="0"></li>
+                <li><img src="https://i.ibb.co/BVzg4Cys/norvic.png" alt="norvic" border="0"></li>
+                <li><img src="https://i.ibb.co/Qjtpq7bX/PCH.png" alt="PCH" border="0"></li>
+                <li><img src="https://i.ibb.co/x81n6qMV/SMC-2.png" alt="Satkhira-Image-Preview" border="0"></li>
+                <li><img src="https://i.ibb.co/mFJpXsq2/upendra-devkota-memorial.png" alt="upendra-devkota-memorial" border="0"></li>
+                
+            </ul>
+          </div>
+
+    </section>
+
+
+    <section id="cert" class="certification-container">
+        <div class="certification-section">
+            <h3>Our Certifications</h3> <!-- Added header -->
+            <div class="certifications">
+                <div class="cert">
+                    <img class="main-img" src="https://i.ibb.co/qMYMVKP8/usa.jpg" alt="USA Certification">
+                    <img class="badge-img" src="https://i.ibb.co/5WW2VVCc/fda.jpg" alt="FDA Badge">
+                </div>
+                <div class="cert">
+                    <img class="main-img" src="https://i.ibb.co/35bs1Xy7/Thailand-flag.jpg" alt="Thailand Certification">
+                    <img class="badge-img" src="https://i.ibb.co/3m7rfCV9/Thai-FDA.jpg" alt="Thai FDA Badge">
+                </div>
+                <div class="cert">
+                    <img class="main-img" src="https://i.ibb.co/TByhC7SV/japan.jpg" alt="Japan Certification">
+                    <img class="badge-img" src="https://i.ibb.co/9mF9zs4k/Pda-Japan.jpg" alt="PMDA Japan Badge">
+                </div>
+            </div>
+            <p class="text">Processing 200 Million Images and Hundreds of Tera Bytes of Data every day.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-heading">Connect with Us</h2>
+            <div class="contact-content">
+                <div class="qr-code">
+                    <img src="https://i.ibb.co/TMpgdyxT/Fb-qr.jpg" alt="Fb-qr" border="0">
+                </div>
+                <div class="contact-info">
+                    <p><strong>Mailing Address</strong><br> <a href="https://www.google.com/maps/place/Downtown+Apartment/@27.6466818,85.3235662,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb176f85dc1d07:0x84cc9cd0c8c0a85b!8m2!3d27.6466771!4d85.3261411!16s%2Fg%2F11c1pqg_qv?entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoJLDEwMjExMjMzSAFQAw%3D%3D">3rd Floor, Thasikhel, Lalitpur Nepal</a></p> <br>
+                    <p><strong>Email Address</strong><br> <a href="mailto:avayabajracharya@psp-saiitek.com">avayabajracharya@psp-saiitek.com</a> </p> <br> 
+                    <p><strong>Powered By</strong><br> <a href="PSP">PSP</a> </p> <br> 
+                    <p><strong>Phone Number</strong><br>  <a href="tel:+9779823085834">+977 9823085834</a>, 
+                        <a href="tel:+9779709042808">+977 9709042808</a></p>
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© <span id="year"></span> Saiitek Solutions. All rights reserved.</p>    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add("loaded");
+        });
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector("nav ul");
+        const links = document.querySelectorAll("nav a");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            menuToggle.innerHTML = navLinks.classList.contains("active") ? "✖" : "&#9776;";
+        });
+
+        // Active page selection
+    
+        
+                // Marquee for clients
+
+        const root = document.documentElement;
+        const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue("--marquee-elements-displayed");
+        const marqueeContent = document.querySelector("ul.marquee-content");
+
+        root.style.setProperty("--marquee-elements", marqueeContent.children.length);
+
+        for(let i=0; i<marqueeElementsDisplayed; i++) {
+          marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section:not(.hero)");
+
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.2 }
+    );
+
+    sections.forEach(section => {
+        section.classList.add("hidden");
+        observer.observe(section);
+    });
+});
+
+// Smooth Scroll & Trigger Animation
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        window.scrollTo({
+            top: targetSection.offsetTop - 50, 
+            behavior: 'smooth'
+        });
+
+        // Ensure the animation runs when clicked, only if screen width is larger than 768px
+        if (window.innerWidth > 768) {
+            setTimeout(() => {
+                targetSection.querySelector('.section-heading').classList.add('active');
+            }, 500);
+        }
+    });
+});
+
+// Heading Animation on Scroll
+function revealSections() {
+    const sections = document.querySelectorAll('.section-heading');
+
+    sections.forEach(heading => {
+        const sectionTop = heading.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.75) {
+            heading.classList.add('active');
+        }
+    });
+}
+
+// Run the function on scroll
+window.addEventListener('scroll', revealSections);
+
+// Initial check on page load
+document.addEventListener('DOMContentLoaded', revealSections);
+
+// auto year change in footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+
+    </script>
+
+</body>
+</html>
