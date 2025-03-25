@@ -105,10 +105,10 @@
             font-size: 28px;
             cursor: pointer;
             padding: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            color: black;
-            border-radius: 10px;
+            background: none; /* Remove background overlay */
+            color: black; /* Keep the menu icon black */
+            border: none; /* Remove border */
+            border-radius: 0; /* Remove rounded corners */
             transition: all 0.3s ease-in-out;
         }
 
@@ -794,6 +794,24 @@ h2 {
 /* Set "Our Certifications" header to black */
 .certification-section h3 {
     color: black; /* Black color for "Our Certifications" */
+}
+
+/* Dropdown menu text color */
+nav ul {
+    background: white; /* Ensure background is white for visibility */
+}
+
+nav ul li a {
+    color: black; /* Make dropdown menu text black */
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #1E90FF; /* Add hover effect with light blue */
+}
+
+nav ul li a:active {
+    color: black; /* Remove yellow color effect on click */
 }
 
     </style>
