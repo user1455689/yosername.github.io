@@ -591,22 +591,16 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          /* text-align: center; */
           flex-shrink: 0;
           width: var(--marquee-element-width);
           max-height: 100%;
-          font-size: calc(var(--marquee-height)*3/4); /* 5rem; */
-          white-space: nowrap;
-          padding: 20px; /* Adds some space around each image */
-
+          padding: 0; /* Removed extra padding */
+          margin: 0 10px; /* Added consistent margin for equal spacing */
         }
 
         .marquee-content li img {
-          width: 100%;
-          gap: 10px;
-          /* height: 100%; */
-          margin: 10px; /* Adds space between images */
-        
+          width: 90%; /* Adjusted width for better alignment */
+          margin: 0; /* Removed margin to avoid inconsistencies */
         }
 
         @media (max-width: 600px) {
@@ -645,10 +639,9 @@
 
         .certifications {
             display: flex;
-            justify-content: center; /* Center-align certifications */
+            justify-content: center;
             align-items: center;
-            gap: 50px; /* Adjust spacing between certifications */
-            flex-wrap: wrap; /* Wrap items for smaller screens */
+            gap: 70px;
             margin-bottom: 30px;
         }
 
@@ -657,56 +650,36 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
-            max-width: 200px; /* Reduce size for better fit */
-            text-align: center;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: slideIn 1s ease-out forwards;
+            animation-delay: 0.5s;
         }
 
         .main-img {
-            width: 100%; /* Make image responsive */
-            height: auto; /* Maintain aspect ratio */
+            width: 250px;
+            height: 150px;
             border-radius: 5px;
             box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .badge-img {
             position: absolute;
-            width: 60px; /* Reduce badge size */
-            height: auto; /* Maintain aspect ratio */
-            bottom: -20px; /* Adjust position */
+            bottom: -45px;
+            width: 100px;
+            height: 80px;
         }
 
-        /* Responsive Design for Certifications */
-        @media (max-width: 768px) {
-            .certifications {
-                gap: 30px; /* Adjust gap for smaller screens */
-            }
-
-            .cert {
-                max-width: 150px; /* Further reduce size for smaller screens */
-            }
-
-            .badge-img {
-                width: 50px; /* Adjust badge size */
-                bottom: -15px; /* Adjust position */
-            }
+        .cert-text {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-top: 100px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideIn 1s ease-out forwards;
+            animation-delay: 1s;
         }
-
-        @media (max-width: 480px) {
-            .certifications {
-                gap: 20px; /* Further reduce gap for very small screens */
-            }
-
-            .cert {
-                max-width: 120px; /* Further reduce size for very small screens */
-            }
-
-            .badge-img {
-                width: 40px; /* Further reduce badge size */
-                bottom: -10px; /* Adjust position */
-            }
-        }
-
+        
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -871,74 +844,7 @@ footer {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-    /* Fix spacing between client logos */
-    .marquee-content li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-shrink: 0;
-        width: var(--marquee-element-width);
-        max-height: 100%;
-        font-size: calc(var(--marquee-height) * 3 / 4);
-        white-space: nowrap;
-        padding: 10px; /* Adjusted padding for consistent spacing */
-        margin: 0 10px; /* Add margin for consistent spacing */
-    }
-
-    .marquee-content li img {
-        width: 150px; /* Ensure consistent logo size */
-        height: auto;
-        margin: 0; /* Remove extra margin */
-    }
-
-    /* Responsive adjustments for clients section */
-    @media (max-width: 768px) {
-        .marquee-content li img {
-            width: 120px; /* Adjust logo size for smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        .marquee-content li img {
-            width: 100px; /* Further reduce logo size for very small screens */
-        }
-    }
-
-    /* General UI alignment improvements */
-    .banner-text h1 {
-        text-align: center; /* Center-align banner text */
-        margin-left: 0; /* Remove unnecessary left margin */
-    }
-
-    .mission-container {
-        flex-direction: column; /* Stack mission text and image vertically */
-        text-align: center; /* Center-align mission text */
-    }
-
-    .mission-text {
-        margin: 0 auto; /* Center mission text */
-        padding: 0 20px; /* Add padding for better spacing */
-    }
-
-    .mission-image img {
-        margin: 20px auto; /* Center mission image */
-        max-width: 90%; /* Ensure responsiveness */
-    }
-
-    .contact-content {
-        flex-direction: column; /* Stack contact info and QR code vertically */
-        text-align: center; /* Center-align contact info */
-        gap: 30px; /* Adjust gap for better spacing */
-    }
-
-    .qr-code img {
-        margin: 0 auto; /* Center QR code */
-    }
-
-    .contact-info {
-        margin: 0 auto; /* Center contact info */
-    }
-</style>
+    </style>
 </head>
 <body>
     <nav class="navbar">
