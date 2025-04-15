@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Era - Home</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #e0e0e0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #f5f5f5;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .logo span {
+      color: #007bff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #007bff;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://i.pinimg.com/736x/4a/e5/d3/4ae5d3074757a801a194a46b84f095cb.jpg') no-repeat center center/cover;
+      height: 70vh; /* Default height for larger screens */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+    }
+
+    .overlay {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(50, 50, 50, 0.7);
+      width: 90%;
+      border-radius: 10px;
+    }
+
+    .overlay h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive Design for Hero Section */
+    @media (max-width: 768px) {
+      .hero {
+        height: 50vh; /* Reduce height for smaller screens */
+        background-size: cover; /* Ensure the image scales properly */
+      }
+
+      .overlay h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+      }
+
+      .overlay {
+        padding: 1.5rem; /* Reduce padding for better fit */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: 40vh; /* Further reduce height for very small screens */
+      }
+
+      .overlay h1 {
+        font-size: 1.2rem; /* Further adjust font size */
+      }
+
+      .overlay {
+        padding: 1rem; /* Further reduce padding */
+      }
+    }
+
+    /* New Arrivals Section */
+    .new-arrivals {
+      padding: 2rem;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .new-arrivals h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .product-card .price {
+      font-size: 1.2rem;
+      color: #007bff;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .product-card button {
+      padding: 0.7rem 1.5rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #0056b3;
+    }
+
+    .product-card .view-details {
+      margin-top: 0.5rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .product-card .view-details:hover {
+      color: #0056b3;
+    }
+
+    /* Checkout Form */
+    .checkout-form {
+      display: none;
+      padding: 2rem;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    .checkout-form h2 {
+      margin-bottom: 1rem;
+      color: #007bff;
+    }
+
+    .checkout-form input,
+    .checkout-form button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkout-form button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .checkout-form button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Video Hero Section */
+    .video-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+    }
+
+    .background-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(50, 50, 50, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .video-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .video-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Categories Section */
+    .categories {
+      padding: 2rem;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .categories h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .category-card {
+      background: #f0f0f0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .category-card h3 {
+      padding: 1rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #ffffff;
+        position: absolute;
+        top: 60px;
+        right: 1rem;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 100;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .search {
+        display: none;
+      }
+
+      .hero {
+        height: 50vh;
+      }
+
+      .overlay h1 {
+        font-size: 1.2rem;
+      }
+
+      .product-card img {
+        height: 200px;
+      }
+
+      .product-card h3 {
+        font-size: 1rem;
+      }
+
+      .product-card p {
+        font-size: 0.9rem;
+      }
+
+      .product-card .price {
+        font-size: 1rem;
+      }
+
+      .product-card button {
+        font-size: 0.9rem;
+      }
+
+      .category-card img {
+        height: 150px;
+      }
+
+      .video-content h1 {
+        font-size: 1.5rem;
+      }
+
+      .video-content p {
+        font-size: 1rem;
+      }
+    }
+
+    .accessories {
+      padding: 2rem;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .accessories h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    /* Checkout Modal */
+    .checkout-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .checkout-modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .checkout-modal-content .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .checkout-modal-content #cart-items {
+      margin: 1rem 0;
+      text-align: left;
+    }
+
+    .checkout-modal-content .checkout-btn {
+      padding: 0.7rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .checkout-modal-content .checkout-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Checkout Form */
+    .checkout-form {
+      display: none;
+      padding: 2rem;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    .checkout-form h2 {
+      margin-bottom: 1rem;
+      color: #007bff;
+    }
+
+    .checkout-form input,
+    .checkout-form button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkout-form button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .checkout-form button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Popup Checkout Form */
+    .checkout-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1100;
+    }
+
+    .checkout-popup-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .checkout-popup-content .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .checkout-popup-content h2 {
+      margin-bottom: 1rem;
+      color: #007bff;
+    }
+
+    .checkout-popup-content input,
+    .checkout-popup-content button {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkout-popup-content button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .checkout-popup-content button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Cart Icon */
+    .cart-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .cart-icon #cart-count {
+      background-color: #007bff;
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">NE<span>ERA</span></div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">DROW</a>
+      <a href="#">ABOUT US</a>
+    </nav>
+    <div class="search">
+      <input type="text" placeholder="Find Art's" />
+      <button>🔍</button>
+    </div>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Cart Modal -->
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-modal-content">
+      <span class="close" onclick="toggleCart()">&times;</span>
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <button class="checkout-btn" onclick="toggleCheckoutForm()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Checkout Form Modal -->
+  <div id="checkout-popup" class="checkout-popup">
+    <div class="checkout-popup-content">
+      <span class="close" onclick="toggleCheckoutForm()">&times;</span>
+      <h2>Checkout</h2>
+      <form id="checkout-form">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Shipping Address" required />
+        <input type="text" placeholder="City" required />
+        <input type="text" placeholder="Postal Code" required />
+        <input type="text" placeholder="Phone Number" required />
+        <button type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="overlay">
+      <h1>Not just clothes,<br />it's <strong>work of art.</strong></h1>
+      <button class="cta-btn">DROW NOW</button>
+    </div>
+  </section>
+
+  <section class="video-hero">
+    <div class="video-overlay">
+      <video autoplay muted loop class="background-video">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-content">
+        <h1>Experience the Art in Motion</h1>
+        <p>Discover our exclusive collection through this immersive experience.</p>
+        <button class="cta-btn">Explore Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="new-arrivals">
+    <h2>New Arrivals</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Product 1">
+        <h3>Men's Jacket</h3>
+        <p>Stylish and comfortable jacket for all seasons.</p>
+        <div class="price">$49.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Product 2">
+        <h3>Women's Dress</h3>
+        <p>Elegant dress perfect for any occasion.</p>
+        <div class="price">$59.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Product 3">
+        <h3>Casual Shoes</h3>
+        <p>Comfortable and trendy shoes for everyday wear.</p>
+        <div class="price">$39.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Product 4">
+        <h3>Accessories</h3>
+        <p>Complete your look with our premium accessories.</p>
+        <div class="price">$19.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="accessories">
+    <h2>Accessories</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Accessory 1">
+        <h3>Leather Wallet</h3>
+        <p>Premium leather wallet for everyday use.</p>
+        <div class="price">$29.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Accessory 2">
+        <h3>Stylish Sunglasses</h3>
+        <p>Protect your eyes with style.</p>
+        <div class="price">$49.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Accessory 3">
+        <h3>Wrist Watch</h3>
+        <p>Elegant wrist watch for all occasions.</p>
+        <div class="price">$99.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/300" alt="Accessory 4">
+        <h3>Backpack</h3>
+        <p>Durable and stylish backpack for daily use.</p>
+        <div class="price">$59.99</div>
+        <button class="add-to-cart">Add to Cart</button>
+        <a href="#" class="view-details">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://via.placeholder.com/300" alt="Men's Clothing" />
+        <h3>Men's Clothing</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/300" alt="Women's Clothing" />
+        <h3>Women's Clothing</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/300" alt="Accessories" />
+        <h3>Accessories</h3>
+      </div>
+      <div class="category-card">
+        <img src="https://via.placeholder.com/300" alt="Footwear" />
+        <h3>Footwear</h3>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background-color: #333; color: #fff; padding: 2rem 1rem; text-align: center;">
+    <div style="margin-bottom: 1.5rem;">
+      <div class="logo" style="font-size: 1.8rem; font-weight: bold; color: #fff;">
+        NE<span style="color: #007bff;">ERA</span>
+      </div>
+      <p style="margin-top: 0.5rem;">Not just clothes, it's a work of art.</p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 1.5rem;">
+      <div>
+        <h4 style="margin-bottom: 0.5rem;">Quick Links</h4>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li><a href="#" style="color: #007bff; text-decoration: none;">Home</a></li>
+          <li><a href="#" style="color: #007bff; text-decoration: none;">Shop</a></li>
+          <li><a href="#" style="color: #007bff; text-decoration: none;">About Us</a></li>
+          <li><a href="#" style="color: #007bff; text-decoration: none;">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="margin-bottom: 0.5rem;">Follow Us</h4>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf09a;</a> <!-- Facebook -->
+          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf099;</a> <!-- Twitter -->
+          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf16d;</a> <!-- Instagram -->
+          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf0e1;</a> <!-- LinkedIn -->
+        </div>
+      </div>
+
+      <div>
+        <h4 style="margin-bottom: 0.5rem;">Our Location</h4>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.41941548468132!3d37.77492977975971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f0f9e0b1%3A0x4c8b8b9b9b9b9b9b!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1616161616161!5m2!1sen!2sin"
+          width="300"
+          height="200"
+          style="border: 0; border-radius: 10px;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <p>&copy; 2023 New Era. All Rights Reserved. | <a href="#" style="color: #007bff; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #007bff; text-decoration: none;">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("active");
+    }
+
+    // Auto-slide carousel
+    const carousel = document.getElementById('carousel');
+    setInterval(() => {
+      carousel.scrollBy({ left: 220, behavior: 'smooth' });
+      if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }, 3000);
+
+    // Show checkout form when "Buy Now" is clicked
+    const checkoutForm = document.getElementById('checkout-form');
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        checkoutForm.style.display = 'block';
+        window.scrollTo({ top: checkoutForm.offsetTop, behavior: 'smooth' });
+      });
+    });
+
+    // Toggle cart modal
+    function toggleCart() {
+      const checkoutModal = document.getElementById('checkout-modal');
+      checkoutModal.style.display = checkoutModal.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Show checkout form
+    function showCheckoutForm() {
+      const checkoutForm = document.getElementById('checkout-form');
+      checkoutForm.style.display = 'block';
+      window.scrollTo({ top: checkoutForm.offsetTop, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
