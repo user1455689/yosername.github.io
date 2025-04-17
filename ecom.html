@@ -14,59 +14,106 @@
     }
 
     body {
-      background-color: #e0e0e0;
+      background-color: #f9f9f9; /* Light background for modern look */
       color: #333;
       line-height: 1.6;
     }
 
-    /* Navbar */
+    /* Modernized Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: #f5f5f5;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(90deg, #f2e4de, #0056b3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
-    .logo {
+    .navbar .logo {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #333;
+      color: white;
     }
 
-    .logo span {
-      color: #007bff;
-    }
-
-    .nav-links {
+    .navbar .nav-links {
       display: flex;
       gap: 1.5rem;
     }
 
-    .nav-links a {
+    .navbar .nav-links a {
       text-decoration: none;
-      color: #555;
+      color: white;
       font-weight: 500;
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: #007bff;
+    .navbar .nav-links a:hover {
+      color: #f0f0f0;
     }
 
-    .menu-icon {
-      display: none;
-      font-size: 1.8rem;
+    .navbar .search-container {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .search-container input {
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 20px;
+      width: 200px;
+    }
+
+    .navbar .search-container button {
+      background: #181919;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
       cursor: pointer;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+      transition: background 0.3s ease;
+    }
+
+    .navbar .search-container button:hover {
+      background: #fcefd4;
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .navbar .search-container {
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .navbar .search-container input {
+        width: 100%;
+      }
     }
 
     /* Hero Section */
     .hero {
-      background: url('https://i.pinimg.com/736x/4a/e5/d3/4ae5d3074757a801a194a46b84f095cb.jpg') no-repeat center center/cover;
+      background: url('https://i.imgur.com/PXVTvSA.jpeg') no-repeat center center/cover;
       height: 70vh; /* Default height for larger screens */
       display: flex;
       align-items: center;
@@ -128,14 +175,14 @@
     .new-arrivals h2 {
       font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: #007bff;
+      color: #56585b;
       font-weight: bold;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
       justify-items: center;
     }
 
@@ -147,16 +194,21 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
       padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%; /* Ensure consistent height */
+      max-width: 300px; /* Set a consistent max width */
     }
 
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     .product-card img {
       width: 100%;
-      height: 300px;
+      height: 200px; /* Fixed height for images */
       object-fit: cover;
       border-radius: 10px;
     }
@@ -176,37 +228,38 @@
 
     .product-card .price {
       font-size: 1.2rem;
-      color: #007bff;
+      color: #D4C9BE; /* Updated price color */
       font-weight: bold;
       margin-bottom: 1rem;
     }
 
     .product-card button {
       padding: 0.7rem 1.5rem;
-      background-color: #007bff;
+      background-color: #D4C9BE; /* Updated button color */
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-size: 1rem;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .product-card button:hover {
-      background-color: #0056b3;
+      background-color: #b8afa5; /* Slightly darker shade for hover */
+      transform: scale(1.05); /* Subtle hover animation */
     }
 
     .product-card .view-details {
       margin-top: 0.5rem;
       display: inline-block;
       font-size: 0.9rem;
-      color: #007bff;
+      color: #D4C9BE; /* Updated link color */
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .product-card .view-details:hover {
-      color: #0056b3;
+      color: #b8afa5; /* Slightly darker shade for hover */
     }
 
     /* Checkout Form */
@@ -222,7 +275,7 @@
 
     .checkout-form h2 {
       margin-bottom: 1rem;
-      color: #007bff;
+      color: #aea99c;
     }
 
     .checkout-form input,
@@ -235,14 +288,14 @@
     }
 
     .checkout-form button {
-      background-color: #007bff;
+      background-color: #eddfca;
       color: #fff;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     .checkout-form button:hover {
-      background-color: #0056b3;
+      background-color: #f7eed5;
     }
 
     /* Video Hero Section */
@@ -253,15 +306,16 @@
       position: relative;
       height: 70vh;
       overflow: hidden;
+      padding: 1rem; /* Add padding for spacing */
+      box-sizing: border-box;
     }
 
     .background-video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
+      height: auto; /* Maintain aspect ratio */
+      object-fit: contain; /* Ensure the whole video is visible */
+      position: relative; /* Remove absolute positioning */
+      z-index: 0;
     }
 
     .video-overlay {
@@ -274,9 +328,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       text-align: center;
+      padding: 1rem; /* Add padding for better spacing */
+      box-sizing: border-box;
       z-index: 1;
+    }
+
+    .video-content {
+      color: white;
+      max-width: 90%; /* Ensure content fits within the screen */
     }
 
     .video-content h1 {
@@ -289,6 +349,56 @@
       margin-bottom: 1.5rem;
     }
 
+    .video-content .cta-btn {
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .video-hero {
+        height: 50vh; /* Adjust height for smaller screens */
+        padding: 1rem;
+      }
+
+      .background-video {
+        object-fit: contain;
+      }
+
+      .video-content h1 {
+        font-size: 1.8rem; /* Adjust font size */
+      }
+
+      .video-content p {
+        font-size: 1rem;
+      }
+
+      .video-content .cta-btn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-hero {
+        height: 40vh; /* Further reduce height for very small screens */
+        padding: 0.5rem;
+      }
+
+      .video-content h1 {
+        font-size: 1.5rem; /* Further adjust font size */
+      }
+
+      .video-content p {
+        font-size: 0.9rem;
+      }
+
+      .video-content .cta-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
     /* Categories Section */
     .categories {
       padding: 2rem;
@@ -299,7 +409,7 @@
     .categories h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
-      color: #007bff;
+      color: #f0cfc4;
     }
 
     .category-grid {
@@ -368,7 +478,7 @@
       }
 
       .product-card img {
-        height: 200px;
+        height: 150px; /* Adjust image height for smaller screens */
       }
 
       .product-card h3 {
@@ -398,6 +508,44 @@
       .video-content p {
         font-size: 1rem;
       }
+
+      .product-card {
+        max-width: 100%; /* Allow cards to take full width on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        height: 40vh;
+      }
+
+      .overlay h1 {
+        font-size: 1.2rem;
+      }
+
+      .overlay {
+        padding: 1rem;
+      }
+
+      .product-card img {
+        height: 120px;
+      }
+
+      .product-card h3 {
+        font-size: 0.9rem;
+      }
+
+      .product-card p {
+        font-size: 0.8rem;
+      }
+
+      .product-card .price {
+        font-size: 0.9rem;
+      }
+
+      .product-card button {
+        font-size: 0.8rem;
+      }
     }
 
     .accessories {
@@ -409,7 +557,7 @@
     .accessories h2 {
       font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: #007bff;
+      color: #f7efc9;
       font-weight: bold;
     }
 
@@ -434,7 +582,12 @@
       width: 90%;
       max-width: 500px;
       text-align: center;
-      position: relative;
+      position: fixed; /* Change to fixed for proper centering */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for centering */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
     }
 
     .checkout-modal-content .close {
@@ -458,6 +611,8 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 1rem;
+      margin-top: 1rem; /* Add spacing above the button */
+      transition: background 0.3s ease;
     }
 
     .checkout-modal-content .checkout-btn:hover {
@@ -477,7 +632,7 @@
 
     .checkout-form h2 {
       margin-bottom: 1rem;
-      color: #007bff;
+      color: #efddc4;
     }
 
     .checkout-form input,
@@ -562,6 +717,8 @@
       font-size: 1.5rem;
       cursor: pointer;
       position: relative;
+      color: white;
+      margin-left: 1rem;
     }
 
     .cart-icon #cart-count {
@@ -574,25 +731,350 @@
       top: -10px;
       right: -10px;
     }
+
+    /* Add hover effects and animations */
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .view-details {
+      color: #D4C9BE; /* Updated link color */
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .view-details:hover {
+      color: #b8afa5; /* Slightly darker shade for hover */
+    }
+
+    .checkout-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .checkout-modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      position: fixed; /* Change to fixed for proper centering */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for centering */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .checkout-modal-content .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Updated Product Details Modal */
+    #product-details-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1100;
+    }
+
+    #product-details-modal .checkout-modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #product-details-modal .checkout-modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    #product-details-modal .checkout-modal-content .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #333;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive Design for Modal */
+    @media (max-width: 480px) {
+      #product-details-modal .checkout-modal-content {
+        padding: 1.5rem;
+        width: 95%;
+      }
+
+      #product-details-modal .checkout-modal-content h2 {
+        font-size: 1.2rem;
+      }
+
+      #product-details-modal .checkout-modal-content p {
+        font-size: 0.9rem;
+      }
+
+      #product-details-modal .checkout-modal-content #product-price {
+        font-size: 1.2rem;
+      }
+    }
+
+    .cta-btn {
+      padding: 0.8rem 2rem;
+      background-color: #007bff;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px; /* Rounded corners */
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-transform: uppercase;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-btn:hover {
+      background-color: #0056b3; /* Darker shade on hover */
+      transform: scale(1.05); /* Slight zoom effect */
+    }
+
+    .cta-btn:active {
+      transform: scale(0.95); /* Slight shrink effect on click */
+    }
+
+    /* Update for Hamburger Menu Dropdown */
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: linear-gradient(90deg, #f2e4de, #0056b3); /* Gradient background */
+      position: absolute;
+      top: 60px;
+      right: 1rem;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      border-radius: 10px; /* Rounded corners */
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-links a {
+      color: black; /* Black text color */
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #333; /* Slightly darker shade on hover */
+    }
+
+    .menu-icon {
+      display: block;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+    }
+
+    /* Floating Cart */
+    .floating-cart {
+      position: fixed;
+      top: 20%;
+      left: 0;
+      width: 250px;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+    }
+
+    .floating-cart:hover {
+      transform: translateX(0);
+    }
+
+    .floating-cart h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .floating-cart ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .floating-cart ul li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .floating-cart .cart-total {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* Style for the "Slide to Checkout" button */
+    .slide-to-checkout {
+      padding: 0.7rem 1.5rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem; /* Add spacing above the button */
+      transition: background 0.3s ease;
+    }
+
+    .slide-to-checkout:hover {
+      background-color: #218838;
+    }
+
+    /* Adjust navbar for mobile screens */
+    @media (max-width: 768px) {
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+      }
+
+      .navbar .logo {
+        flex: 1;
+        text-align: left;
+      }
+
+      .menu-icon {
+        order: 2; /* Place the menu icon to the right of the logo */
+        margin-left: 1rem;
+      }
+
+      .cart-icon {
+        order: 1; /* Place the cart icon beside the search bar */
+        margin-left: 1rem;
+      }
+
+      .search-container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 60px;
+        right: 1rem;
+        width: 90%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="navbar">
     <div class="logo">NE<span>ERA</span></div>
-    <nav class="nav-links" id="nav-links">
-      <a href="#">HOME</a>
-      <a href="#">DROW</a>
-      <a href="#">ABOUT US</a>
-    </nav>
-    <div class="search">
-      <input type="text" placeholder="Find Art's" />
-      <button>🔍</button>
-    </div>
-    <div class="cart-icon" onclick="toggleCart()">
-      🛒 <span id="cart-count">0</span>
-    </div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="Search for products..." oninput="filterProducts()" />
+      <button onclick="filterProducts()">🔍</button>
+      <div class="cart-icon" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
+    </div>
   </header>
+
+  <!-- Floating Cart -->
+  <div id="floating-cart" class="floating-cart">
+    <h3>Your Cart</h3>
+    <ul id="cart-items-list"></ul>
+    <div class="cart-total">
+      <strong>Total:</strong> $<span id="cart-total">0.00</span>
+    </div>
+  </div>
 
   <!-- Cart Modal -->
   <div id="checkout-modal" class="checkout-modal">
@@ -600,7 +1082,8 @@
       <span class="close" onclick="toggleCart()">&times;</span>
       <h2>Your Cart</h2>
       <div id="cart-items"></div>
-      <button class="checkout-btn" onclick="toggleCheckoutForm()">Proceed to Checkout</button>
+      <button class="checkout-btn" onclick="redirectToCheckout()">Proceed to Checkout</button>
+      <button class="slide-to-checkout" onclick="slideToCheckout()">Slide to Checkout</button>
     </div>
   </div>
 
@@ -624,14 +1107,14 @@
   <section class="hero">
     <div class="overlay">
       <h1>Not just clothes,<br />it's <strong>work of art.</strong></h1>
-      <button class="cta-btn">DROW NOW</button>
+      <button class="cta-btn">Shop Now</button>
     </div>
   </section>
 
   <section class="video-hero">
     <div class="video-overlay">
       <video autoplay muted loop class="background-video">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        <source src="https://i.imgur.com/SWivvr1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="video-content">
@@ -646,36 +1129,36 @@
     <h2>New Arrivals</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Product 1">
+        <img src="https://i.pinimg.com/736x/ff/77/bb/ff77bb54104159804f94781b5da0e762.jpg" alt="Men's Jacket">
         <h3>Men's Jacket</h3>
         <p>Stylish and comfortable jacket for all seasons.</p>
         <div class="price">$49.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <button class="add-to-cart" onclick="addToCart('Men\'s Jacket', 49.99)">Add to Cart</button>
+        <a href="mens-jacket.html" class="view-details">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Product 2">
+        <img src="https://i.pinimg.com/736x/a6/f9/e1/a6f9e1c5fd99c67249a4901f9c4172fc.jpg" alt="Women's Dress">
         <h3>Women's Dress</h3>
         <p>Elegant dress perfect for any occasion.</p>
         <div class="price">$59.99</div>
-        <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <button class="add-to-cart" onclick="addToCart('Women\'s Dress', 59.99)">Add to Cart</button>
+        <a href="#" class="view-details" onclick="showProductDetails('Women\'s Dress', 'Elegant dress perfect for any occasion.', '$59.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Product 3">
+        <img src="https://i.pinimg.com/736x/6e/3b/6c/6e3b6cff7af0c7e6445103d02f2bef5e.jpg" alt="Product 3">
         <h3>Casual Shoes</h3>
         <p>Comfortable and trendy shoes for everyday wear.</p>
         <div class="price">$39.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Casual Shoes', 'Comfortable and trendy shoes for everyday wear.', '$39.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Product 4">
+        <img src="https://i.pinimg.com/736x/ee/8e/df/ee8edfe7a2669dfafdb299c08d0a3abd.jpg" alt="Product 4">
         <h3>Accessories</h3>
         <p>Complete your look with our premium accessories.</p>
         <div class="price">$19.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Accessories', 'Complete your look with our premium accessories.', '$19.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
     </div>
   </section>
@@ -684,36 +1167,36 @@
     <h2>Accessories</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Accessory 1">
+        <img src="https://i.pinimg.com/736x/b3/fe/4c/b3fe4c8515311dac8eecae99b559ad3a.jpg" alt="Accessory 1">
         <h3>Leather Wallet</h3>
         <p>Premium leather wallet for everyday use.</p>
         <div class="price">$29.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Leather Wallet', 'Premium leather wallet for everyday use.', '$29.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Accessory 2">
+        <img src="https://i.pinimg.com/736x/ac/c1/e7/acc1e7d31b4b059712946f170b27e893.jpg" alt="Accessory 2">
         <h3>Stylish Sunglasses</h3>
         <p>Protect your eyes with style.</p>
         <div class="price">$49.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Stylish Sunglasses', 'Protect your eyes with style.', '$49.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Accessory 3">
+        <img src="https://i.pinimg.com/736x/f9/51/70/f951704f27ed9d710c52c94a21246a43.jpg" alt="Accessory 3">
         <h3>Wrist Watch</h3>
         <p>Elegant wrist watch for all occasions.</p>
         <div class="price">$99.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Wrist Watch', 'Elegant wrist watch for all occasions.', '$99.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
       <div class="product-card">
-        <img src="https://via.placeholder.com/300" alt="Accessory 4">
+        <img src="https://i.pinimg.com/736x/71/51/53/71515329b8dbd97ec24aa657d62d6ee3.jpg" alt="Accessory 4">
         <h3>Backpack</h3>
         <p>Durable and stylish backpack for daily use.</p>
         <div class="price">$59.99</div>
         <button class="add-to-cart">Add to Cart</button>
-        <a href="#" class="view-details">View Details</a>
+        <a href="#" class="view-details" onclick="showProductDetails('Backpack', 'Durable and stylish backpack for daily use.', '$59.99', 'https://via.placeholder.com/300')">View Details</a>
       </div>
     </div>
   </section>
@@ -722,19 +1205,19 @@
     <h2>Shop by Category</h2>
     <div class="category-grid">
       <div class="category-card">
-        <img src="https://via.placeholder.com/300" alt="Men's Clothing" />
+        <img src="https://i.pinimg.com/736x/3e/f4/2e/3ef42e52db6fbc55cf38c5e99ceaf302.jpg" alt="Men's Clothing" />
         <h3>Men's Clothing</h3>
       </div>
       <div class="category-card">
-        <img src="https://via.placeholder.com/300" alt="Women's Clothing" />
+        <img src="https://i.pinimg.com/736x/35/21/2b/35212b15eddaf775c3ca10c7e9effc39.jpg" alt="Women's Clothing" />
         <h3>Women's Clothing</h3>
       </div>
       <div class="category-card">
-        <img src="https://via.placeholder.com/300" alt="Accessories" />
+        <img src="https://i.pinimg.com/736x/28/11/b1/2811b1359f8274024d64f5f296fdff9b.jpg" alt="Accessories" />
         <h3>Accessories</h3>
       </div>
       <div class="category-card">
-        <img src="https://via.placeholder.com/300" alt="Footwear" />
+        <img src="https://i.pinimg.com/736x/da/34/0a/da340a9e8350b44469d4bbd884b1dc97.jpg" alt="Footwear" />
         <h3>Footwear</h3>
       </div>
     </div>
@@ -752,20 +1235,20 @@
       <div>
         <h4 style="margin-bottom: 0.5rem;">Quick Links</h4>
         <ul style="list-style: none; padding: 0; margin: 0;">
-          <li><a href="#" style="color: #007bff; text-decoration: none;">Home</a></li>
-          <li><a href="#" style="color: #007bff; text-decoration: none;">Shop</a></li>
-          <li><a href="#" style="color: #007bff; text-decoration: none;">About Us</a></li>
-          <li><a href="#" style="color: #007bff; text-decoration: none;">Contact</a></li>
+          <li><a href="#" style="color: #D4C9BE; text-decoration: none;">Home</a></li>
+          <li><a href="#" style="color: #D4C9BE; text-decoration: none;">Shop</a></li>
+          <li><a href="#" style="color: #D4C9BE; text-decoration: none;">About Us</a></li>
+          <li><a href="#" style="color: #D4C9BE; text-decoration: none;">Contact</a></li>
         </ul>
       </div>
 
       <div>
         <h4 style="margin-bottom: 0.5rem;">Follow Us</h4>
         <div style="display: flex; gap: 1rem; justify-content: center;">
-          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf09a;</a> <!-- Facebook -->
-          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf099;</a> <!-- Twitter -->
-          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf16d;</a> <!-- Instagram -->
-          <a href="#" style="color: #007bff; font-size: 1.5rem; text-decoration: none;">&#xf0e1;</a> <!-- LinkedIn -->
+          <a href="#" style="color: #D4C9BE; font-size: 1.5rem; text-decoration: none;">&#xf09a;</a> <!-- Facebook -->
+          <a href="#" style="color: #D4C9BE; font-size: 1.5rem; text-decoration: none;">&#xf099;</a> <!-- Twitter -->
+          <a href="#" style="color: #D4C9BE; font-size: 1.5rem; text-decoration: none;">&#xf16d;</a> <!-- Instagram -->
+          <a href="#" style="color: #D4C9BE; font-size: 1.5rem; text-decoration: none;">&#xf0e1;</a> <!-- LinkedIn -->
         </div>
       </div>
 
@@ -782,10 +1265,15 @@
       </div>
     </div>
 
-    <p>&copy; 2023 New Era. All Rights Reserved. | <a href="#" style="color: #007bff; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #007bff; text-decoration: none;">Terms of Service</a></p>
+    <p>&copy; 2023 New Era. All Rights Reserved. | <a href="#" style="color: #D4C9BE; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #D4C9BE; text-decoration: none;">Terms of Service</a></p>
   </footer>
 
   <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
     function toggleMenu() {
       const navLinks = document.getElementById("nav-links");
       navLinks.classList.toggle("active");
@@ -821,6 +1309,267 @@
       checkoutForm.style.display = 'block';
       window.scrollTo({ top: checkoutForm.offsetTop, behavior: 'smooth' });
     }
+
+    // Add this script inside the <script> tag
+    function showProductDetails(title, description, price, imageUrl) {
+      document.getElementById('product-title').innerText = title;
+      document.getElementById('product-description').innerText = description;
+      document.getElementById('product-price').innerText = price;
+      document.getElementById('product-image').src = imageUrl;
+
+      const productDetailsModal = document.getElementById('product-details-modal');
+      productDetailsModal.style.display = 'block';
+    }
+
+    function toggleProductDetails() {
+      const productDetailsModal = document.getElementById('product-details-modal');
+      productDetailsModal.style.display = 'none';
+    }
+
+    // Add smooth scrolling for better navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const menuIcon = document.querySelector('.menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Toggle the dropdown menu
+    menuIcon.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent the click from propagating to the document
+      navLinks.classList.toggle('active');
+    });
+
+    // Hide the dropdown menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !menuIcon.contains(e.target)) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    function slideToCheckout() {
+      const checkoutForm = document.getElementById('checkout-form');
+      checkoutForm.style.display = 'block';
+      window.scrollTo({ top: checkoutForm.offsetTop, behavior: 'smooth' });
+    }
+
+    function redirectToCheckout() {
+      // Save cart data to localStorage
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+
+      // Redirect to the checkout page
+      window.location.href = 'checkout.html';
+    }
   </script>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsList = document.getElementById('cart-items-list');
+    const cartTotalElement = document.getElementById('cart-total');
+    const cartCountElement = document.getElementById('cart-count');
+
+    // Add product to cart
+    function addToCart(productName, productPrice) {
+      // Check if the product already exists in the cart
+      const existingItem = cartItems.find(item => item.name === productName);
+      if (existingItem) {
+        // If the product exists, increase its quantity
+        existingItem.quantity++;
+      } else {
+        // If the product does not exist, add it to the cart
+        cartItems.push({ name: productName, price: productPrice, quantity: 1 });
+      }
+
+      // Update the cart UI and save the cart to localStorage
+      updateCartUI();
+    }
+
+    // Update cart UI
+    function updateCartUI() {
+      cartItemsList.innerHTML = ''; // Clear the cart items list
+      let total = 0;
+
+      // Loop through the cart items and display them
+      cartItems.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${item.name} - $${item.price.toFixed(2)} x ${item.quantity}
+          <button onclick="increaseQuantity(${index})">+</button>
+          <button onclick="decreaseQuantity(${index})">-</button>
+        `;
+        cartItemsList.appendChild(li);
+        total += item.price * item.quantity; // Calculate the total price
+      });
+
+      // Update the total price and cart count
+      cartTotalElement.textContent = total.toFixed(2);
+      cartCountElement.textContent = cartItems.length;
+
+      // Save the updated cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    }
+
+    // Increase quantity of a cart item
+    function increaseQuantity(index) {
+      cartItems[index].quantity++;
+      updateCartUI();
+    }
+
+    // Decrease quantity of a cart item
+    function decreaseQuantity(index) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+      } else {
+        // Remove the item from the cart if the quantity is 0
+        cartItems.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    // Show checkout form as a popup
+    function showCheckoutForm() {
+      const checkoutPopup = document.getElementById('checkout-popup');
+      const checkoutItems = document.getElementById('checkout-items');
+      const checkoutTotal = document.getElementById('checkout-total');
+
+      // Populate checkout items
+      checkoutItems.innerHTML = '';
+      let total = 0;
+      cartItems.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = `${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`;
+        checkoutItems.appendChild(div);
+        total += item.price * item.quantity;
+      });
+
+      checkoutTotal.textContent = `Total: $${total.toFixed(2)}`;
+      checkoutPopup.style.display = 'flex';
+    }
+
+    // Close checkout form
+    function closeCheckoutForm() {
+      const checkoutPopup = document.getElementById('checkout-popup');
+      checkoutPopup.style.display = 'none';
+    }
+
+    // Place order
+    function placeOrder() {
+      const fullName = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const city = document.getElementById('city').value;
+      const postalCode = document.getElementById('postal-code').value;
+      const phone = document.getElementById('phone').value;
+
+      if (!fullName || !email || !address || !city || !postalCode || !phone) {
+        alert('Please fill in all the details.');
+        return;
+      }
+
+      const orderDetails = {
+        customer: { fullName, email, address, city, postalCode, phone },
+        cart: cartItems
+      };
+
+      console.log('Order Placed:', orderDetails);
+      alert('Order placed successfully!');
+      closeCheckoutForm();
+      localStorage.removeItem('cart');
+      cartItems.length = 0;
+      updateCartUI();
+    }
+
+    // Initialize cart UI on page load
+    updateCartUI();
+  </script>
+
+  <!-- Add this modal at the end of the body -->
+  <div id="product-details-modal" class="checkout-modal">
+    <div class="checkout-modal-content">
+      <span class="close" onclick="toggleProductDetails()">&times;</span>
+      <h2 id="product-title">Product Title</h2>
+      <img id="product-image" src="" alt="Product Image" style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 1rem;">
+      <p id="product-description">Product description goes here.</p>
+      <div id="product-price" style="font-size: 1.5rem; color: #007bff; font-weight: bold; margin-bottom: 1rem;">$0.00</div>
+      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
+
+<!-- Checkout Popup -->
+<div id="checkout-popup" class="checkout-popup">
+  <div class="checkout-popup-content">
+    <span class="close" onclick="closeCheckoutForm()">&times;</span>
+    <h2>Checkout</h2>
+    <div id="checkout-items"></div>
+    <div id="checkout-total" style="margin: 1rem 0; font-weight: bold;"></div>
+    <form id="checkout-form" onsubmit="event.preventDefault(); placeOrder();">
+      <input type="text" id="full-name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="text" id="address" placeholder="Shipping Address" required />
+      <input type="text" id="city" placeholder="City" required />
+      <input type="text" id="postal-code" placeholder="Postal Code" required />
+      <input type="text" id="phone" placeholder="Phone Number" required />
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .checkout-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .checkout-popup-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+  }
+
+  .checkout-popup-content .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .checkout-popup-content form input,
+  .checkout-popup-content form button {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .checkout-popup-content form button {
+    background-color: #f7dca1;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .checkout-popup-content form button:hover {
+    background-color: #0056b3;
+  }
+</style>
 </body>
 </html>
