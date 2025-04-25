@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EYECARE CENTER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --text-color: #212529;
+            --light-bg: #f8f9fa;
+            --dark-bg: #343a40;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        .header {
+            background: white;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Hero Section with Sliding Banners */
+        .hero {
+            position: relative;
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            overflow: hidden;
+            background: var(--light-bg);
+        }
+
+        .hero .carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .hero .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hero .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .hero .carousel-controls button {
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+        }
+
+        .hero .carousel-controls button:first-child {
+            left: 10px; /* Align to left-center */
+        }
+
+        .hero .carousel-controls button:last-child {
+            right: 10px; /* Align to right-center */
+        }
+
+        @media (max-width: 768px) {
+            .hero .carousel-controls button {
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 5%;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 4rem 5%;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .features-list {
+            flex: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 5%;
+            background: var(--light-bg);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .why-choose {
+                flex-direction: column;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+        }
+
+        /* Enhanced Footer Styles */
+        footer {
+            background-color: #1e40af; /* Updated background color */
+            color: white;
+            padding: 50px 20px; /* Added padding for better spacing */
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Added gap for better spacing */
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Adjusted gap for better spacing */
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5em; /* Increased icon size */
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #ffeb3b; /* Updated hover color */
+        }
+
+        .footer-info {
+            text-align: left;
+            width: 40%;
+        }
+
+        .footer-map iframe {
+            border: none;
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            border-radius: 10px; /* Added border radius for better aesthetics */
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+
+        /* Responsive Footer */
+        @media screen and (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-info, 
+            .footer-social, 
+            .footer-map {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: white;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Services Section with Images */
+        .service-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* About Our Doctors Section */
+        .doctors {
+            padding: 4rem 5%;
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .doctors .section-title {
+            color: white;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .doctor-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: var(--text-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 5%;
+            background: var(--light-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Overlay for closing the mobile menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: none;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .carousel-controls button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Gallery Slideshow Styles for Mobile */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                display: flex;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .gallery-item {
+                min-width: 100%;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .gallery-controls {
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                transform: translateY(-50%);
+                z-index: 2;
+            }
+
+            .gallery-controls button {
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+
+            .gallery-controls button:hover {
+                background: rgba(0, 0, 0, 0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <img src="https://i.pinimg.com/736x/33/6f/b8/336fb82ad996a6b15bd10c0b591c774c.jpg" alt="VisionCare Logo" class="logo">
+                <div class="logo-text">EYECARE CENTER</div>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#book" class="cta-button">Book Appointment</a>
+            </div>
+            <div class="menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+        <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="closeMobileMenu()">Home</a>
+            <a href="#services" onclick="closeMobileMenu()">Services</a>
+            <a href="#about" onclick="closeMobileMenu()">About</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+            <a href="#book" class="cta-button" onclick="closeMobileMenu()">Book Appointment</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="carousel" id="heroCarousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://img.freepik.com/free-photo/woman-getting-eye-exam-ophthalmologist-office_52683-137896.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('https://img.freepik.com/free-photo/medium-shot-woman-getting-her-eyes-checked_23-2150801430.jpg');"></div>
+                <div class="carousel-item" style="background-image: url('https://img.freepik.com/free-photo/front-view-boy-eye-s-checkup_23-2150758559.jpg');"></div>
+            </div>
+            <div class="carousel-controls">
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+        <h1>Professional Eye Care Services</h1>
+        <p>Providing expert eye care with advanced technology and compassionate service.</p>
+        <a href="#book" class="cta-button">Schedule Consultation</a>
+    </section>
+    <style>
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: none;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .carousel-controls button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://img.freepik.com/free-photo/eye-doctor-with-female-patient-examination-modern-clinic-ophthalmologist-is-using-special-medical-equipment-eye-health_657921-161.jpg?t=st=1742543478~exp=1742547078~hmac=7c684d427936a4c59745fc433e5d61dc13979e033316c470effac885c696878e&w=1380" alt="Comprehensive Exams">
+                <h3>Comprehensive Exams</h3>
+                <p>Complete eye health evaluation using advanced diagnostic equipment.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://img.freepik.com/free-photo/man-having-ophthalmology-appointment_23-2149082494.jpg?t=st=1742543586~exp=1742547186~hmac=6874d5aa128d722fd3aa4c32e9d77d3b1dcca1bbc66519f2907f121b56825f2d&w=1380" alt="Vision Therapy">
+                <h3>Vision Therapy</h3>
+                <p>Customized solutions including glasses, contacts, and LASIK consultations.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://img.freepik.com/free-photo/front-view-boy-eye-s-checkup_23-2150758559.jpg?t=st=1742543318~exp=1742546918~hmac=f89ce12c537bbf5d001631cd33679fff80103dd6c3609b73269056f2d17c1024&w=1380" alt="Pediatric Clinic">
+                <h3>Pediatric Clinic</h3>
+                <p>Specialized care for children's eye health and vision development.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://img.freepik.com/free-photo/man-applying-his-contact-lens_53876-96296.jpg?t=st=1742543682~exp=1742547282~hmac=2171004289b3761ebb31f5615a08df4c5cb9405100fead61584be766a52b63c9&w=1380" alt="Contact Lens Clinic">
+                <h3>Contact Lens Clinic</h3>
+                <p>Expert fitting and care for all types of contact lenses.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <div class="features-list">
+            <h2>Why Choose Us</h2>
+            <div class="feature-item">
+                <i class="fas fa-certificate feature-icon"></i>
+                <div>
+                    <h4>Board Certified Specialists</h4>
+                    <p>Experienced Optometrists over with over 10+ years</p>
+                </div>
+            </div>
+            <!-- Add more feature items -->
+        </div>
+    </section>
+
+    <section class="doctors" id="doctors">
+        <div class="section-title">
+            <h2>About Our Doctors</h2>
+        </div>
+        <div class="doctors-grid">
+            <div class="doctor-card">
+                <img src="https://img.freepik.com/free-vector/doctor-background-design_1302-5849.jpg?t=st=1742544889~exp=1742548489~hmac=f28b54ce391d4b99f518cf015c7913ff5dd064d5f4a4c9f572e0602c5e41e6c1&w=900" alt="Dr DOLLY JHA">
+                <h3>Dr. DOLLY JHA</h3>
+                <p>Optometrists with 10+ years of experience in advanced eye care.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="section-title">
+            <h2>Gallery</h2>
+        </div>
+        <div class="gallery-grid" id="gallerySlideshow">
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/lBdVzou.jpeg" alt="Gallery Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/Z6JlIU6.jpeg" alt="Gallery Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/hPemCAd.jpeg" alt="Gallery Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/fcJl2jT.jpeg" alt="Gallery Image 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/03c5Wp0.jpeg" alt="Gallery Image 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://i.imgur.com/rN5Pbf7.jpeg" alt="Gallery Image 6">
+            </div>
+        </div>
+        <div class="gallery-controls" id="galleryControls">
+            <button onclick="prevGallerySlide()">&#10094;</button>
+            <button onclick="nextGallerySlide()">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+        </div>
+        <form class="contact-form" onsubmit="sendWhatsAppMessage('contact'); return false;">
+            <div class="form-group">
+                <input type="text" id="contact_name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="contact_email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="contact_message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Schedule Consultation Form -->
+    <section id="book" class="contact-section">
+        <div class="section-title">
+            <h2>Schedule Consultation</h2>
+        </div>
+        <form class="contact-form" onsubmit="sendWhatsAppMessage('book'); return false;">
+            <div class="form-group">
+                <input type="text" id="book_name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="book_email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="date" id="appointment_date" required>
+            </div>
+            <div class="form-group">
+                <textarea id="book_message" rows="5" placeholder="Service or Message" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>EYECARE CENTER</h3>
+                <p>Way to Eye Hospital, Janakpurdham, Nepal</p>
+                <p>Phone: +977-9851022272</p>
+                <p>Email: carecentereye@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/profile.php?id=61572665110964 " target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/eyecarecenter2024/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d489.52586593535426!2d85.9177603004951!3d26.7366020180475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2snp!4v1739110333198!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 VisionCare Eye Center. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Carousel functionality for hero section
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('#heroCarousel .carousel-item');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Initialize carousel
+        showSlide(currentSlide);
+        setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+
+        // Close Mobile Menu
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        // Gallery Slideshow Functionality for Mobile
+        let currentGallerySlide = 0;
+        const gallerySlides = document.querySelectorAll('#gallerySlideshow .gallery-item');
+        const totalGallerySlides = gallerySlides.length;
+
+        function showGallerySlide(index) {
+            gallerySlides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - index) * 100}%)`;
+                slide.style.transition = 'transform 0.3s ease-in-out'; // Faster transition
+            });
+        }
+
+        function nextGallerySlide() {
+            currentGallerySlide = (currentGallerySlide + 1) % totalGallerySlides;
+            showGallerySlide(currentGallerySlide);
+        }
+
+        function prevGallerySlide() {
+            currentGallerySlide = (currentGallerySlide - 1 + totalGallerySlides) % totalGallerySlides;
+            showGallerySlide(currentGallerySlide);
+        }
+
+        // Initialize gallery slideshow
+        showGallerySlide(currentGallerySlide);
+        setInterval(nextGallerySlide, 3000); // Faster auto-slide every 3 seconds
+    </script>
+</body>
+</html>
