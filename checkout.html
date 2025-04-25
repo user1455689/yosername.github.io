@@ -231,7 +231,7 @@
     }
 
     .payment-toggle input:checked + span {
-      background-color: #ff6f61;
+      background-color: #ffd58e;
       color: white;
       border-color: #ff6f61;
       padding: 0.8rem 1.5rem;
@@ -250,7 +250,7 @@
   <div class="checkout-container">
     <!-- Header Section -->
     <div class="checkout-header">
-      <img src="logo.png" alt="Logo">
+      <img src="https://i.pinimg.com/736x/c0/fb/a0/c0fba0961d1b9a0b0d5f63a85979bb08.jpg" alt="Logo">
       <div class="progress-bar">
         <div class="active"></div>
         <div></div>
@@ -323,6 +323,7 @@
             <button onclick="decreaseQuantity(${index})">-</button>
             <span>${item.quantity}</span>
             <button onclick="increaseQuantity(${index})">+</button>
+            <button onclick="removeItem(${index})" style="color: grey; margin-left: 10px;">Remove</button>
           </div>
         `;
 
@@ -331,6 +332,7 @@
       });
 
       cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+      localStorage.setItem('cart', JSON.stringify(cart));
     }
 
     // Function to increase quantity
@@ -343,8 +345,16 @@
     function decreaseQuantity(index) {
       if (cart[index].quantity > 1) {
         cart[index].quantity--;
-        renderCart();
+      } else {
+        removeItem(index);
       }
+      renderCart();
+    }
+
+    // Function to remove an item from the cart
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
     }
 
     // Function to handle order placement
@@ -362,14 +372,37 @@
         return;
       }
 
-      const orderDetails = {
-        customer: { fullName, email, address, city, postalCode, phone },
-        paymentMethod: paymentMethod.value,
-        cart
-      };
+      let cartDetails = '';
+      cart.forEach((item) => {
+        cartDetails += `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+      });
 
-      console.log('Order Placed:', orderDetails);
-      alert(`Order placed successfully using ${paymentMethod.value}!`);
+      const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+
+      const message = `Order Details:
+Name: ${fullName}
+Email: ${email}
+Address: ${address}, ${city}, ${postalCode}
+Phone: ${phone}
+Payment Method: ${paymentMethod.value}
+
+Cart Items:
+${cartDetails}
+
+Total: $${totalAmount}`;
+
+      const whatsappURL = `https://wa.me/9779746571404?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    // Function to update checkout form
+    function updateCheckoutForm(item, index) {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        ${item.name} - $${item.price.toFixed(2)} x ${item.quantity}
+        <button onclick="removeFromCheckout(${index})" style="margin-left: 10px; background-color: white; color: red; border: 1px solid #ccc; cursor: pointer;">Remove</button>
+      `;
+      checkoutItems.appendChild(div);
     }
 
     // Initial render
